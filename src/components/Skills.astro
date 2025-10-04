@@ -4,20 +4,37 @@ import Icon from './Icon.astro';
 
 <section class="box skills">
 	<div class="stack gap-2 lg:gap-4">
-		<!-- TODO -->
-		<Icon icon="java-logo" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Full Stack Java</h2>
-		<p>Spring boot + ReactJS/Angular.</p>
+		<div class="row gap-1">
+			<Icon icon="java-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+			<Icon icon="spring-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+		</div>
+		<h2>Java Backend</h2>
+		<p>Spring boot: 5 years</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Skill 2</h2>
-		<p>Neque viverra justo nec ultrices dui. Est ultricies integer quis auctor elit.</p>
+		<div class="row gap-1">
+			<Icon icon="react-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+			<Icon icon="angular-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+		</div>
+		<h2>Frontend Framework</h2>
+		<p>ReactJS: 2 years Angular: 2 years</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Skill 3</h2>
-		<p>Urna porttitor rhoncus dolor purus non enim praesent ornare.</p>
+		<div class="row gap-1">
+			<Icon icon="postgre-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+			<Icon icon="mysql-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+		</div>
+		<h2>Database</h2>
+		<p>PostgreSQL: 3 years MySQL: 2 years</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4">
+		<div class="row gap-1">
+			<Icon icon="git-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+			<Icon icon="github-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+			<Icon icon="gitlab-logo" color="var(--accent-regular)" size="2.5rem" gradient />
+		</div>
+		<h2>Version Control</h2>
+		<p>Git, Github, Gitlab</p>
 	</div>
 </section>
 
@@ -33,7 +50,7 @@ import Icon from './Icon.astro';
 	.skills {
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 2rem;
 	}
 
 	.skills h2 {
@@ -47,17 +64,17 @@ import Icon from './Icon.astro';
 	@media (min-width: 50em) {
 		.box {
 			border-radius: 1.5rem;
-			padding: 2.5rem;
+			padding: 2rem;
 		}
 
 		.skills {
 			display: grid;
-			grid-template-columns: repeat(6, 1fr);
-			gap: 3rem;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 1rem;
 		}
 
 		.skills h2 {
-			font-size: var(--text-2xl);
+			font-size: var(--text-xl);
 		}
 	}
 </style>

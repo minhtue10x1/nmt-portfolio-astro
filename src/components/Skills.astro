@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 ---
 
-<section class="box skills">
+<section class="box skills skill-card hover-react">
 	<div class="stack gap-2 lg:gap-4">
 		<div class="row gap-1">
 			<Icon icon="java-logo" color="var(--accent-regular)" size="2.5rem" gradient />
@@ -61,6 +61,17 @@ import Icon from './Icon.astro';
 		color: var(--gray-400);
 	}
 
+	.skill-card {
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  	}
+
+  	.skill-card.hover-react:hover {
+		transform: translateY(-6px) scale(1.03);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+		/* You can add more effects here */
+	}
 	@media (min-width: 50em) {
 		.box {
 			border-radius: 1.5rem;

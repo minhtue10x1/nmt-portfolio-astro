@@ -10,6 +10,7 @@ import Icon from '../components/Icon.astro';
 import Pill from '../components/Pill.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Skills from '../components/Skills.astro';
+import WorkExp from '../components/WorkExp.astro';
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -45,6 +46,7 @@ const projects = (await getCollection('work'))
 			</header>
 
 			<Skills />
+			<WorkExp />
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-48">

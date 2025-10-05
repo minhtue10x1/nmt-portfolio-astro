@@ -1,0 +1,266 @@
+---
+/** WorkExperience.astro
+ *  Props:
+ *    - title?: string
+ *    - experiences: Array<{
+ *        title: string
+ *        company: string
+ *        location?: string
+ *        start: string
+ *        end: string
+ *        bullets: string[]
+ *      }>
+ */
+
+export interface Experience {
+  title: string;
+  company: string;
+  location?: string;
+  start: string;
+  end: string;
+  bullets: string[];
+}
+
+interface Props {
+  title?: string;
+  experiences?: Experience[];
+}
+
+const {
+  title = "Work Experience",
+  experiences = [
+    {
+      title: "FULL STACK DEVELOPER",
+      company: "Hitachi Digital Services, Da Nang",
+      start: "October 2025",
+      end: "Present",
+      bullets: ["On probation period. Updating..."],
+    },
+    {
+      title: "FULL STACK JAVA DEVELOPER",
+      company: "FPT Software, Da Nang",
+      start: "September 2022",
+      end: "October 2025",
+      bullets: [
+        "(2 years) Joined in a migration project, migrated old system to Spring Boot and ReactJS (reduxsaga) and PostgreSQL system",
+        "(1 year) Joined in a migration project, migrated old system to Spring Boot and VueJS and MySQL system",
+        "Analyzed 20+ requirements from documentation and collaborated with BAs",
+        "Implemented 15+ BE functions (related to interacting with Excel file using Apache POI) + Unit Test",
+        "Analyzed complex queries to improve Database performance",
+        "Fixed 50+ bugs",
+        "Learned and worked with different technologies and platforms, including APIs management tool (Swagger), Jenkins, Gitlab CI/CD",
+        "(6 months) Joined in a Version-Up project, to upgrade Python 3.8, 3.9 to Python 3.11 using AWS Lambda",
+        "Upgraded the environment of Lambda function to Python 3.11, checked and updated the code (or config) if any syntax error existed",
+        "Created UTC (Whitebox) and ITC, executed UTR and ITR",
+      ],
+    },
+    {
+      title: "INTERN - JUNIOR JAVA DEVELOPER",
+      company: "FPT Software, Da Nang",
+      start: "January 2021",
+      end: "December 2022",
+      bullets: [
+        "Joined in 2 Legacy Modernization projects, to migrate outdated system to Spring Boot + Angular + PostgreSQL system. Took part in Design - Coding - Testing phases",
+        "Project included over 200 members",
+        "Leader of a small team (4 members)",
+        "Reviewed and supported coding for members",
+        "Created 10+ Detail Designs for Coding phase",
+        "Coded 15+ screens (Including BE and FE) + Unit Test",
+        "Fixed 50+ bugs (UT-IT-UAT)",
+      ],
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="wx">
+  <h2 class="wx__title">{title}</h2>
+
+  <ol class="wx__timeline" role="list" aria-label="Career timeline">
+    {
+      experiences.map((exp, i) => (
+        <li class="wx__item hover-react">
+          <div class="wx__dot" aria-hidden="true" />
+          <article class="wx__card">
+            <header class="wx__header">
+              <div>
+                <h3 class="wx__role">{exp.title}</h3>
+                <p class="wx__company">
+                  {exp.company}
+                  {exp.location ? `, ${exp.location}` : ""}
+                </p>
+              </div>
+              <span class="wx__badge">
+                {exp.start} &nbsp;–&nbsp; {exp.end}
+              </span>
+            </header>
+
+            {exp.bullets?.length > 0 && (
+              <ul class="wx__bullets">
+                {exp.bullets.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+            )}
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  :root {
+    --wx-bg: #0e0f13;
+    --wx-surface: #14161c;
+    --wx-surface-2: #191c24;
+    --wx-text: #e7e8ea;
+    --wx-subtle: #a9afba;
+    --wx-accent-1: #32d1ff;
+    --wx-accent-2: #9a31ff;
+    --wx-card-ring: rgba(255, 255, 255, 0.06);
+    --wx-shadow: 0 6px 24px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --wx-bg: #f7f8fb;
+      --wx-surface: #ffffff;
+      --wx-surface-2: #ffffff;
+      --wx-text: #0b1020;
+      --wx-subtle: #5b6373;
+      --wx-card-ring: rgba(0, 0, 0, 0.06);
+      --wx-shadow: 0 6px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  .wx {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    color: var(--wx-text);
+  }
+
+  .wx__title {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin: 0 0 2rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* Timeline */
+  .wx__timeline {
+    position: relative;
+    margin: 0;
+    padding: 0 0 0 2.25rem; /* room for the line and dots */
+    list-style: none;
+  }
+
+  .wx__timeline::before {
+    content: "";
+    position: absolute;
+    left: 1.05rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 3px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--wx-accent-1), var(--wx-accent-2));
+    filter: drop-shadow(0 0 2px rgba(50, 209, 255, 0.35));
+  }
+
+  .wx__item {
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .wx__item.hover-react:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    /* You can add more effects here */
+  }
+
+  .wx__dot {
+    position: absolute;
+    left: -2px;
+    top: 1.1rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--wx-accent-2);
+    box-shadow:
+      0 0 0 4px color-mix(in oklab, var(--wx-accent-2) 25%, transparent),
+      0 0 10px 2px color-mix(in oklab, var(--wx-accent-2) 40%, transparent);
+  }
+
+  /* Card */
+  .wx__card {
+    background: linear-gradient(180deg, var(--wx-surface), var(--wx-surface-2));
+    border-radius: 16px;
+    border: 1px solid var(--wx-card-ring);
+    box-shadow: var(--wx-shadow);
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  }
+
+  .wx__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .wx__role {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-weight: 650;
+    letter-spacing: 0.2px;
+  }
+
+  .wx__company {
+    margin: 0;
+    color: var(--wx-subtle);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .wx__badge {
+    white-space: nowrap;
+    background: color-mix(in oklab, var(--wx-accent-1) 18%, transparent);
+    color: var(--wx-text);
+    border: 1px solid color-mix(in oklab, var(--wx-accent-1) 35%, transparent);
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .wx__bullets {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.1rem;
+  }
+  .wx__bullets li {
+    margin: 0.45rem 0;
+    line-height: 1.35;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 720px) {
+    .wx__badge {
+      font-size: 0.75rem;
+    }
+    .wx__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .wx__timeline {
+      padding-left: 2rem;
+    }
+    .wx__dot {
+      left: -1px;
+      top: 0.95rem;
+    }
+  }
+</style>

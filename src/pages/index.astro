@@ -13,6 +13,8 @@ import Skills from '../components/Skills.astro';
 import WorkExp from '../components/WorkExp.astro';
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import portrait from '../assets/portrait.jpg';
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection('work'))
@@ -37,11 +39,11 @@ const projects = (await getCollection('work'))
 					</div>
 				</Hero>
 
-				<img
+				<Image
 					alt="Minhtue10x1 smiling portrait"
-					width="480"
-					height="620"
-					src="/assets/portrait.jpg"
+					width={480}
+					height={620}
+					src={portrait}
 				/>
 			</header>
 

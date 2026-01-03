@@ -2,6 +2,8 @@
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import atWork from '../assets/at-work.jpg';
 ---
 
 <BaseLayout title="About | Minhtue10x1" description="About Minhtue10x1 Lorem Ipsum">
@@ -11,10 +13,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 				title="About"
 				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
 			>
-				<img
-					width="1553"
-					height="873"
-					src="/assets/at-work.jpg"
+				<Image
+					width={1553}
+					height={873}
+					src={atWork}
 					alt="Minhtue10x1 at work with a colleague"
 				/>
 			</Hero>
